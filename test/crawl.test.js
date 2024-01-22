@@ -7,6 +7,18 @@ test("normalizeURL strip protocol HTTPS", () => {
   const expected = "rutvikmendpara.com";
   expect(actual).toEqual(expected);
 });
+test("normalizeURL strip www", () => {
+  const input = "https://www.rutvikmendpara.com";
+  const actual = normalizeURL(input);
+  const expected = "rutvikmendpara.com";
+  expect(actual).toEqual(expected);
+});
+test("normalizeURL strip www with trailing slash ", () => {
+  const input = "https://www.rutvikmendpara.com";
+  const actual = normalizeURL(input);
+  const expected = "rutvikmendpara.com";
+  expect(actual).toEqual(expected);
+});
 
 test("normalizeURL strip protocol HTTP", () => {
   const input = "http://rutvikmendpara.com";
