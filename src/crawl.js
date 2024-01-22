@@ -26,7 +26,11 @@ function getURLSFromHTML(htmlBody, baseURL) {
       }
     } else {
       // absolute
-      urls.push(normalizeURL(linkElement.href));
+      try {
+        urls.push(normalizeURL(linkElement.href));
+      } catch (error) {
+        return [];
+      }
     }
   }
   return urls;

@@ -90,3 +90,16 @@ test("getURLSFromHTML absolute + relative urls", () => {
   ];
   expect(actual).toEqual(expected);
 });
+
+test("getURLSFromHTML invalid url", () => {
+  const inputHTMLBody = `
+  <html>
+    <body>
+      <a href="invalid"> Rutvik </a>
+    </body>
+  </html>`;
+  const inputBaseURL = "https://rutvikmendpara.com/";
+  const actual = getURLSFromHTML(inputHTMLBody, inputBaseURL);
+  const expected = [];
+  expect(actual).toEqual(expected);
+});
