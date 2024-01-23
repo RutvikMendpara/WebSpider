@@ -1,6 +1,6 @@
-const { crawlPage } = require("./crawl");
+const { crawlPage, getURLSFromHTML } = require("./crawl");
 
-function main() {
+async function main() {
   if (process.argv.length < 3) {
     console.log("no website found");
     process.exit(1);
@@ -10,9 +10,17 @@ function main() {
     process.exit(1);
   }
 
-  const baseURL = process.argv[2];
-  console.log(`starting crawl of ${baseURL}`);
-  crawlPage(baseURL);
+  const BaseURL = process.argv[2];
+  console.log(`starting crawl of ${BaseURL}`);
+  const pages = await crawlPage(BaseURL, BaseURL, {});
+
+  if (pages) {
+    for (const page of Object.entries(pages)) {
+      console.log(page);
+    }
+  } else {
+    console.log("Error in crawling. Pages object is undefined.");
+  }
 }
 
 main();
