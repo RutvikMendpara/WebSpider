@@ -80,7 +80,6 @@ async function crawlPage(BaseURL, currentURL, pages) {
     const htmlBody = await response.text();
 
     const nextURLs = getURLSFromHTML(htmlBody, BaseURL);
-    console.log(nextURLs);
     try {
       for (const nextURL of nextURLs) {
         let fullNextURL = nextURL;

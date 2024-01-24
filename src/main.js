@@ -1,4 +1,5 @@
 const { crawlPage, getURLSFromHTML } = require("./crawl");
+const { printReport } = require("./report");
 
 async function main() {
   if (process.argv.length < 3) {
@@ -15,9 +16,7 @@ async function main() {
   const pages = await crawlPage(BaseURL, BaseURL, {});
 
   if (pages) {
-    for (const page of Object.entries(pages)) {
-      console.log(page);
-    }
+    printReport(pages);
   } else {
     console.log("Error in crawling. Pages object is undefined.");
   }
