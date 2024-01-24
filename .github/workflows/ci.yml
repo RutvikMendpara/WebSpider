@@ -1,4 +1,4 @@
-name: Node.js CI with Jest
+name: Node.js CI
 
 on:
   push:
@@ -29,4 +29,10 @@ jobs:
         run: npm install
 
       - name: Run Jest tests
-        run: npm test
+        run: npm test -- --coverage
+
+      - name: Upload code coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage
